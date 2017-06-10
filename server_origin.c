@@ -7,7 +7,7 @@
 #include <netinet/in.h>	// 인터넷 주소 체계 (ex. in_port_t)
 #include <pthread.h>
 
-#define BUF_SIZE 256	// 챝팅할 떄 메시지 최대 길이
+#define BUF_SIZE 256	// 챝팅할 떄 메tl지 최대 길이
 #define MAX_CLNT 256	// 최대 동시 접속자 수
 
 void * handle_clnt(void * arg);	// 클라이언트 쓰레드용 함수(함수 포인터)
@@ -39,7 +39,7 @@ int main(int argc, char *argv[])		// 인자로 포트번호 받음
 	serv_adr.sin_port=htons(atoi(argv[1])); // 포트는 사용자가 지정한 포트 사용
 	
 	//서버 소켓에 주소를 할당한다.
-	if(bind(serv_sock, (struct sockaddr*) &serv_adr, &sizeof(serv_adr))==-1)
+	if(bind(serv_sock, (struct sockaddr*) &serv_adr, sizeof(serv_adr))==-1)
 		error_handling("bind() error");
 
 	// 서버 소켓을 서버로 사용
